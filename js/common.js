@@ -1,17 +1,38 @@
+// ========================>
+// slider for reviews
+// <=======================
 var swiper = new Swiper('.sect4__slider', {
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
   },
+  // loop: true,
   autoHeight: true,
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: '.sect4__next',
+    prevEl: '.sect4__prev',
   },
   spaceBetween: 40
 });
-
-
+swiper.slideTo(1)
+swiper.on('slideChange', function () {
+  let index = swiper.realIndex;
+  let nextImg = document.querySelector('.sect4__next img');
+  let prevImg = document.querySelector('.sect4__prev img');
+  // sorry for this code :(
+  if (index == 0) {
+    prevImg.setAttribute('src', ``)
+    nextImg.setAttribute('src', `img/ava${index + 2}.png`)
+  }
+  else if (index == 1) {
+    prevImg.setAttribute('src', `img/ava${index}.png`)
+    nextImg.setAttribute('src', `img/ava${index + 2}.png`)
+  }
+  else if (index == 2) {
+    prevImg.setAttribute('src', `img/ava${index}.png`)
+    nextImg.setAttribute('src', ``)
+  }
+});
 // ========================>
 // animation scroll
 // <=======================
@@ -39,4 +60,23 @@ var swiper = new Swiper('.sect4__slider', {
       }
     }, false);
   }
+})();
+// ========================>
+// validate input
+// <=======================
+(function () {
+  var input = document.querySelector('input[name="name"]');
+  input.addEventListener('input', function () {
+    input.value = input.value.replace(/[0-9]/g, '')
+  })
+})();
+// ========================>
+// pulse btn
+// <=======================
+(function () {
+  var offer = document.getElementById('offer');
+  var btn = document.querySelector('.pulse__btn');
+  window.addEventListener('scroll', (e) => {
+    document.documentElement.scrollTop + 300 > offer.offsetTop ? btn.classList.add('show') : btn.classList.remove('show')
+  })
 })();
