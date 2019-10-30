@@ -21,16 +21,18 @@ swiper.on('slideChange', function () {
   let prevImg = document.querySelector('.sect4__prev img');
   // sorry for this code :(
   if (index == 0) {
-    prevImg.setAttribute('src', ``)
+    prevImg.style.opacity = '0'
     nextImg.setAttribute('src', `img/ava${index + 2}.png`)
   }
   else if (index == 1) {
+    prevImg.style.opacity = '1'
+    nextImg.style.opacity = '1'
     prevImg.setAttribute('src', `img/ava${index}.png`)
     nextImg.setAttribute('src', `img/ava${index + 2}.png`)
   }
   else if (index == 2) {
     prevImg.setAttribute('src', `img/ava${index}.png`)
-    nextImg.setAttribute('src', ``)
+    nextImg.style.opacity = '0'
   }
 });
 // ========================>
